@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Mapper que transforma objetos de MarcaCoche a Pojos o Entidades
  */
-@Mapper
+@Mapper(componentModel = "spring")
 @Component
 public interface ICarBrandMapper {
 

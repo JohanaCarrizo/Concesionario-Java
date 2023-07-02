@@ -13,5 +13,7 @@ public interface ICarBrandService {
 
     CarBrandPojo save(CarBrandPojo carBrandPojo);
 
+    Optional<CarBrandPojo> update(CarBrandPojo carBrandPojo);
+
     boolean delete(Integer idCarBrand);
 }

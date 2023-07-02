@@ -36,13 +36,12 @@ public class CarBrandController {
         }
     }
 
-    @PutMapping
+    @PatchMapping
     public ResponseEntity<CarBrandPojo> update(@RequestBody CarBrandPojo carBrandPojo){
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(iCarBrandService.save(carBrandPojo));
+        return ResponseEntity.of(iCarBrandService.update(carBrandPojo));
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable Integer id){
         return new ResponseEntity<>(this.iCarBrandService.delete(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
