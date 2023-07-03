@@ -1,6 +1,6 @@
 package com.project.coches.domain.service;
 
-import com.project.coches.domain.pojo.CarBrandPojo;
+import com.project.coches.domain.dto.CarBrandDto;
 import com.project.coches.domain.repository.ICarBrandRespository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,26 +14,26 @@ public class CarBrandServiceImpl implements ICarBrandService{
 
     private final ICarBrandRespository iCarBrandRespository;
     @Override
-    public List<CarBrandPojo> getAll() {
+    public List<CarBrandDto> getAll() {
         return iCarBrandRespository.getAll();
     }
 
     @Override
-    public Optional<CarBrandPojo> getCarBrand(Integer id) {
+    public Optional<CarBrandDto> getCarBrand(Integer id) {
         return iCarBrandRespository.getCarBrand(id);
     }
 
     @Override
-    public CarBrandPojo save(CarBrandPojo carBrandPojo) {
-        return iCarBrandRespository.save(carBrandPojo);
+    public CarBrandDto save(CarBrandDto carBrandDto) {
+        return iCarBrandRespository.save(carBrandDto);
     }
 
     @Override
-    public Optional<CarBrandPojo> update(CarBrandPojo carBrandPojo) {
-        if(iCarBrandRespository.getCarBrand(carBrandPojo.getId()).isEmpty()){
+    public Optional<CarBrandDto> update(CarBrandDto carBrandDto) {
+        if(iCarBrandRespository.getCarBrand(carBrandDto.getId()).isEmpty()){
             return Optional.empty();
         }
-        return Optional.of(iCarBrandRespository.save(carBrandPojo));
+        return Optional.of(iCarBrandRespository.save(carBrandDto));
     }
 
     @Override

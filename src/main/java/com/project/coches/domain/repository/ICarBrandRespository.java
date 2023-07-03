@@ -1,17 +1,17 @@
 package com.project.coches.domain.repository;
 
-import com.project.coches.domain.pojo.CarBrandPojo;
+import com.project.coches.domain.dto.CarBrandDto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ICarBrandRespository {
 
-    List<CarBrandPojo> getAll();
+    List<CarBrandDto> getAll();
 
-    Optional<CarBrandPojo> getCarBrand(Integer id);
+    Optional<CarBrandDto> getCarBrand(Integer id);
 
-    CarBrandPojo save(CarBrandPojo carBrandPojo);
+    CarBrandDto save(CarBrandDto carBrandDto);
 
     void delete(Integer idCarBrand);
 }
