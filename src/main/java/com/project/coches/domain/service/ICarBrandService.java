@@ -1,19 +1,19 @@
 package com.project.coches.domain.service;
 
-import com.project.coches.domain.pojo.CarBrandPojo;
+import com.project.coches.domain.dto.CarBrandDto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ICarBrandService {
 
-    List<CarBrandPojo> getAll();
+    List<CarBrandDto> getAll();
 
-    Optional<CarBrandPojo> getCarBrand(Integer id);
+    Optional<CarBrandDto> getCarBrand(Integer id);
 
-    CarBrandPojo save(CarBrandPojo carBrandPojo);
+    CarBrandDto save(CarBrandDto carBrandDto);
 
-    Optional<CarBrandPojo> update(CarBrandPojo carBrandPojo);
+    Optional<CarBrandDto> update(CarBrandDto carBrandDto);
 
     boolean delete(Integer idCarBrand);
 }
