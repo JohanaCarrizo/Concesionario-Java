@@ -1,9 +1,8 @@
 package com.project.coches.controller;
 
-import com.project.coches.domain.dto.CarBrandDto;
 import com.project.coches.domain.dto.CustomerDto;
 import com.project.coches.domain.dto.response.ResponseCustomerDto;
-import com.project.coches.domain.service.ICustomerService;
+import com.project.coches.domain.useCase.ICustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

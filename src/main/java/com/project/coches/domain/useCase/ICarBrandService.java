@@ -1,4 +1,4 @@
-package com.project.coches.domain.service;
+package com.project.coches.domain.useCase;
 
 import com.project.coches.domain.dto.CarBrandDto;
 
