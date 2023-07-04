@@ -3,6 +3,7 @@ package com.project.coches.domain.service;
 import com.project.coches.domain.dto.CustomerDto;
 import com.project.coches.domain.dto.response.ResponseCustomerDto;
 import com.project.coches.domain.repository.ICustomerRepository;
+import com.project.coches.exception.EmailValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,11 @@ public class CustomerService implements ICustomerService{
 
     @Override
     public ResponseCustomerDto save(CustomerDto newCustomerDto) {
+
+        if(!newCustomerDto.getEmail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")){
+            throw new EmailValidationException();
+        }
 
         String passwordGenerated = generateRandomPassword(8);
         newCustomerDto.setPassword(passwordGenerated);
