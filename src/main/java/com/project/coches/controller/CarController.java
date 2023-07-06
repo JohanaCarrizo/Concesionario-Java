@@ -21,7 +21,7 @@ public class CarController {
         return ResponseEntity.ok(iCarService.getAll());
     }
 
-    @GetMapping(path = "/brand-car/{idBrandCar}")
+    @GetMapping(path = "/car-brand/{idBrandCar}")
     public ResponseEntity<List<CarDto>> getByIdBrandCar(@PathVariable Integer idBrandCar) {
         return ResponseEntity.ok(iCarService.getByCarBrand(idBrandCar));
     }
