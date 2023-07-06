@@ -29,10 +29,10 @@ public class CarEntity {
 
     private String color;
 
-    @Column(name = "numero_caballo_fuerza")
+    @Column(name = "numero_caballos_fuerza")
     private Double horsepower;
 
-    @Column(name = "cantidad_puerta")
+    @Column(name = "cantidad_puertas")
     private Integer numberDoor;
 
     @Column(name = "cilindraje")
