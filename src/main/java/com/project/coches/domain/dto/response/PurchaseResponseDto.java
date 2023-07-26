@@ -15,5 +15,5 @@ public class PurchaseResponseDto {
     private LocalDateTime date;
     private Double total;
     private String paymentMethod;
-    private List<CarPurchasesResponseDto> carsPurchases;
+    private List<CarPurchaseResponseDto> carsPurchases;
 }

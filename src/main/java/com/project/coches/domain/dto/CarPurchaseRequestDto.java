@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CarPurchasesRequestDto {
+public class CarPurchaseRequestDto {
 
     private Integer purchaseNumberBill;
     private Integer codeCar;

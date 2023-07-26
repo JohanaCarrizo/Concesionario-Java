@@ -6,11 +6,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {ICarPurchaseMapper.class})
 @Component
 public interface IPurchaseMapper {
-
-    PurchaseRequestDto toPurchaseRequestDto(PurchaseEntity purchaseEntity);
     @Mapping(target = "customerEntity", ignore = true)
     PurchaseEntity toPurchaseEntity(PurchaseRequestDto purchaseRequestDto);
 }

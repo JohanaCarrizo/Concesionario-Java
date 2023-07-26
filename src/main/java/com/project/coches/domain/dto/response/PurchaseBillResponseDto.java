@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 @AllArgsConstructor
-public class ResponseCustomerDto {
+public class PurchaseBillResponseDto {
 
-    private String password;
+    private Integer numberBill;
 }
