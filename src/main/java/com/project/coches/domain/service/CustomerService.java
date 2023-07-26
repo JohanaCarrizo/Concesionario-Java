@@ -1,7 +1,7 @@
 package com.project.coches.domain.service;
 
 import com.project.coches.domain.dto.CustomerDto;
-import com.project.coches.domain.dto.response.ResponseCustomerDto;
+import com.project.coches.domain.dto.response.CustomerResponseDto;
 import com.project.coches.domain.repository.ICustomerRepository;
 import com.project.coches.domain.useCase.ICustomerService;
 import com.project.coches.exception.EmailValidationException;
@@ -32,7 +32,7 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public ResponseCustomerDto save(CustomerDto newCustomerDto) {
+    public CustomerResponseDto save(CustomerDto newCustomerDto) {
 
         if(!newCustomerDto.getEmail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")){
@@ -43,7 +43,7 @@ public class CustomerService implements ICustomerService {
         newCustomerDto.setPassword(passwordGenerated);
         newCustomerDto.setActive(1);
         iCustomerRepository.save(newCustomerDto);
-        return new ResponseCustomerDto(passwordGenerated);
+        return new CustomerResponseDto(passwordGenerated);
     }
 
     @Override
