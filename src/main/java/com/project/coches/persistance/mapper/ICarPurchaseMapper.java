@@ -11,6 +11,6 @@ public interface ICarPurchaseMapper {
     @Mapping(source = "codeCar", target = "id.codeCar")
     @Mapping(target = "purchaseEntity", ignore = true)
     @Mapping(target = "carEntity", ignore = true)
-    @Mapping(target = "id.purchaseNumberBill", ignore = true)
+    @Mapping(target = "id.purchasesNumberBill", ignore = true)
     CarPurchaseEntity toCarPurchaseEntity(CarPurchaseRequestDto carPurchaseRequestDto);
 }
