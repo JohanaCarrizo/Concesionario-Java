@@ -6,7 +6,7 @@ import com.project.coches.domain.dto.response.PurchaseResponseDto;
 
 import java.util.List;
 
-public interface IPurchaseUseCase {
+public interface IPurchaseService {
 
     List<PurchaseResponseDto> getAll();
 

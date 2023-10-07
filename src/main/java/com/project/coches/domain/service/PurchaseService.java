@@ -6,7 +6,7 @@ import com.project.coches.domain.dto.response.PurchaseBillResponseDto;
 import com.project.coches.domain.dto.response.PurchaseResponseDto;
 import com.project.coches.domain.repository.ICarRepository;
 import com.project.coches.domain.repository.IPurchaseRepository;
-import com.project.coches.domain.useCase.IPurchaseUseCase;
+import com.project.coches.domain.useCase.IPurchaseService;
 import com.project.coches.exception.PurchaseNotExistException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class PurchaseService implements IPurchaseUseCase {
+public class PurchaseService implements IPurchaseService {
 
     private final IPurchaseRepository iPurchaseRepository;
 

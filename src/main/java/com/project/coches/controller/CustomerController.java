@@ -32,15 +32,6 @@ public class CustomerController {
         return ResponseEntity.of(iCustomerService.getCustomerByEmail(email));
     }
 
-    @PostMapping
-    public ResponseEntity<CustomerResponseDto> save(@RequestBody CustomerDto newCustomerDto){
-        try {
-            return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(iCustomerService.save(newCustomerDto));
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-    }
 
     @PatchMapping
     public ResponseEntity<CustomerDto> update(@RequestBody CustomerDto editCustomerDto){
