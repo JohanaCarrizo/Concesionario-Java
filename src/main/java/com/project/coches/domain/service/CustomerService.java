@@ -1,11 +1,14 @@
 package com.project.coches.domain.service;
 
 import com.project.coches.domain.dto.CustomerDto;
-import com.project.coches.domain.dto.response.CustomerResponseDto;
+import com.project.coches.domain.dto.response.ResponseCustomerDto;
 import com.project.coches.domain.repository.ICustomerRepository;
 import com.project.coches.domain.useCase.ICustomerService;
+import com.project.coches.exception.CustomerExistsException;
 import com.project.coches.exception.EmailValidationException;
+import com.project.coches.security.Roles;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -16,6 +19,9 @@ import java.util.Optional;
 public class CustomerService implements ICustomerService {
 
     private final ICustomerRepository iCustomerRepository;
+
+    private final PasswordEncoder passwordEncoder;
+
     @Override
     public List<CustomerDto> getAll() {
         return iCustomerRepository.getAll();
@@ -32,18 +38,23 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public CustomerResponseDto save(CustomerDto newCustomerDto) {
+    public ResponseCustomerDto save(CustomerDto newCustomer) {
 
-        if(!newCustomerDto.getEmail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
-                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")){
+        if (!newCustomer.getEmail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")) {
             throw new EmailValidationException();
         }
 
-        String passwordGenerated = generateRandomPassword(8);
-        newCustomerDto.setPassword(passwordGenerated);
-        newCustomerDto.setActive(1);
-        iCustomerRepository.save(newCustomerDto);
-        return new CustomerResponseDto(passwordGenerated);
+        if (getCustomerByCardId(newCustomer.getCardId()).isPresent() || getCustomerByEmail(newCustomer.getEmail()).isPresent()) {
+            throw new CustomerExistsException();
+        }
+
+        String passwordGenerated = generateRandomPassword(10);
+        newCustomer.setPassword(passwordEncoder.encode(passwordGenerated));
+        newCustomer.setActive(1);
+        newCustomer.setRol(Roles.CUSTOMER);
+        iCustomerRepository.save(newCustomer);
+        return new ResponseCustomerDto(passwordGenerated);
     }
 
     @Override

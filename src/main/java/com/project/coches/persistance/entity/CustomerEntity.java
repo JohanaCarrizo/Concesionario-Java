@@ -1,5 +1,6 @@
 package com.project.coches.persistance.entity;
 
+import com.project.coches.security.Roles;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -35,6 +36,8 @@ public class CustomerEntity {
 
     @Column(name = "contrasenia")
     private String password;
+
+    private String rol;
 
     @OneToMany(mappedBy = "customerEntity")
     private List<PurchaseEntity> purchaseEntity;
